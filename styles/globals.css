@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0f0f0f;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #959595;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #717171;
+}
+
+p,
+div {
+  text-align: justify;
+}
+
+.sectionHeading {
+  @apply px-4 text-center flex justify-center items-center text-3xl md:text-4xl font-medium dark:text-[#07d0e5] text-[#c72c6c] pb-8 md:pb-10;
+}
+
+@layer components {
+  /* Navbar.jsx */
+  .navbar {
+    @apply dark:bg-black h-[12vh] md:flex items-center sticky top-0 py-6 bg-white opacity-95 z-20 hidden;
+  }
+
+  .navLinks {
+    @apply dark:text-[#07d0e5] text-[#c72c6d] font-medium p-2 hover:border-b border-solid border-[#c72c6c] dark:border-[#07d0e5];
+  }
+
+  .navLinksMobile {
+    @apply text-lg pl-3 flex items-center gap-6 py-2 hover:bg-[#ccfaff] dark:hover:bg-[#0f0f0f] text-[#c72c6c] dark:text-[#07d0e5] font-medium;
+  }
+
+  .blog-heading {
+    @apply md:text-3xl text-xl font-bold text-center bg-[#07d0e5] dark:bg-[#c72c6c] rounded p-2;
+  }
+
+  .navbar a {
+    @apply hover:bg-white hover:text-black rounded-md px-4;
+  }
+
+  /* Blogs.jsx */
+  .blogLink {
+    @apply md:font-bold font-normal text-sm font-sans md:text-xl text-center p-1 mx-1;
+  }
+
+  /* For Blog Page */
+  .layoutContainer {
+    @apply flex gap-x-7 w-full dark:bg-gray-900 sm:dark:bg-gray-700 transition-all duration-1000;
+  }
+
+  .layoutBox1 {
+    @apply sm:w-[60%] ml-[3%] w-[94%] border-0 sm:border border-solid border-gray-300 rounded-xl p-4 sm:ml-[10%] min-h-[84vh] sm:h-[84vh] sm:overflow-y-scroll dark:bg-gray-900 my-[2vh] transition-all duration-1000;
+  }
+  .layoutBox2 {
+    @apply w-[20%] p-2 mt-2 hidden sm:block transition-all duration-1000;
+  }
+  p,
+  div {
+    @apply dark:text-white text-black transition-all duration-1000;
+  }
+
+  /* For tic-tac-toe */
+  .ttt .one,
+  .ttt .two,
+  .ttt .three {
+    @apply sm:w-24  sm:h-24 w-16 h-16 border-2 border-solid border-black text-2xl font-bold flex items-center justify-center dark:border-white;
+  }
+
+  .ttt .one,
+  .ttt .two {
+    @apply border-r-0;
+  }
+
+  .ttt > div > div:nth-child(2) {
+    @apply border-y-0;
+  }
+}
