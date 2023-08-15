@@ -4,11 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
-import { BlogsData } from "@/constants";
-import Theme from "@/utils/Theme";
-import BackTo from "@/components/buttons/BackTo";
+import { BlogsData } from "../constants";
+import Theme from "../utils/Theme";
+import BackTo from "../components/buttons/BackTo";
 
-const BlogsPage = () => {
+const BlogsPage: React.FC = () => {
   return (
     <Fragment>
       <Head>

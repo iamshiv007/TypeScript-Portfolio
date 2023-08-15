@@ -1,9 +1,7 @@
 import React, { Fragment } from "react";
 import Image from "next/image";
 
-import Resume from "@/utils/Resume";
-
-const Intro = () => {
+const Intro: React.FC = () => {
   return (
     <Fragment>
       <div id="home">
@@ -13,7 +11,7 @@ const Intro = () => {
             <p className="md:text-6xl text-4xl font-bold mt-5">
               I&apos;m{" "}
               <span className="text-[#c72c6c] dark:text-[#07d0e5]">
-                John Due
+                Shivraj
               </span>
             </p>
             <p className="md:text-6xl text-4xl font-bold mt-5">
@@ -30,7 +28,6 @@ const Intro = () => {
                 src="/images/cartoon 0.png"
                 width={300}
               />
-              <Resume />
             </div>
           </div>
         </div>
