@@ -1,5 +1,3 @@
-This is Next part of my next js portfolio where i'l impliment typescript and testing with jest and react-testing-library.
+This is 2nd version of my first NextJS portfolio where i'll be implimenting Typescript and testing with Jest and react-testing-library. Its not completed yet.
 
-Work on progress
-
-you can consider old repo - shiv-s-portfolio
+## Go to First Version  👉 [Next-Portfolio](https://github.com/iamshiv007/Next-Portfolio)
