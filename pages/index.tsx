@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 const Navbar = dynamic(() => import("../layout/Navbar"));
 const Intro = dynamic(() => import("../sections/Intro"));
 const SocialMedia = dynamic(() => import("../utils/SocialMedia"));
+const Skills = dynamic(() => import("../sections/Skills"));
 
 const Home: React.FC = () => {
   return (
@@ -73,6 +74,8 @@ const Home: React.FC = () => {
           <Intro />
           {/* SocialMedia */}
           <SocialMedia />
+          {/* Skills */}
+          <Skills />
         </div>
       </div>
     </Fragment>

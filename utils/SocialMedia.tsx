@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Link from "next/link";
 
-import { SocialMediaData, SocialMedia } from "../constants/SocialMediaData";
+import { SocialMediaData, SocialMedia } from "../constants";
 
 const SocialMediaComponent: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const SocialMediaComponent: React.FC = () => {
               className={"p-2 rounded-full text-xl dark:text-white text-white"}
               style={{ background: social.color }}
             >
-              {(social.icon as () => JSX.Element)()} {/* Type assertion here */}
+             {React.createElement(social.icon)}
             </div>
           </Link>
         ))}

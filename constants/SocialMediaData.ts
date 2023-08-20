@@ -1,11 +1,11 @@
-import React from "react";
+import { IconType } from "react-icons";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { BsGithub } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 
 export interface SocialMedia {
-  icon: React.ComponentType<any>;
+  icon: IconType;
   color: string;
   link: string;
 }

@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import { FaLaptopCode } from "react-icons/fa";
 
-import { SkillsData } from "@/constants";
+import { SkillsData, Skill } from "../constants";
 
-const Skills = () => {
+const Skills: React.FC = () => {
   return (
     <Fragment>
       <section id="skills">
@@ -17,12 +17,16 @@ const Skills = () => {
 
           <div>
             <div className="flex flex-wrap gap-6 mx-6 justify-center">
-              {SkillsData?.map((skill, key) => (
+              {SkillsData?.map((skill: Skill, key: number) => (
                 <div
                   className="flex flex-col justify-around items-center p-3 border cursor-pointer border-solid border-black dark:border-white md:w-32 md:h-32 w-20 h-20 rounded-lg"
                   key={key}
                 >
-                  {skill.icon}
+                  <div className={"md:text-4xl text-2xl"}>
+                    {React.createElement(skill.icon, {
+                      color: skill.color,
+                    })}
+                  </div>
                   <p className="md:text-base text-xs">{skill.name}</p>
                 </div>
               ))}
