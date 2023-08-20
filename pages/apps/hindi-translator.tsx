@@ -1,15 +1,15 @@
-import React, { Fragment, useState } from "react";
+import React, { ChangeEvent, Fragment, useState } from "react";
 import Head from "next/head";
 import axios from "axios";
 
-import Theme from "@/utils/Theme";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../utils/Theme";
+import BackTo from "../../components/buttons/BackTo";
 
-const HindiTranslator = () => {
-  const [text, setText] = useState("");
-  const [language, setLanguage] = useState("hi");
-  const [output, setOutput] = useState("");
-  const [loading, setLoading] = useState(false);
+const HindiTranslator: React.FC = () => {
+  const [text, setText] = useState<string>("");
+  const [language, setLanguage] = useState<string>("hi");
+  const [output, setOutput] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const translateFun = async () => {
     try {
@@ -50,10 +50,12 @@ const HindiTranslator = () => {
                 className="border dark:bg-black border-solid dark:border-white border-black rounded p-3 text-xl h-[22vh] w-[90%] sm:w-[60%] m-auto"
                 id="from"
                 name="from"
-                onChange={(e) => setText(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+                  setText(e.target.value)
+                }
                 placeholder="Wirte here..."
                 value={text}
-               />
+              />
             </div>
 
             <div className="w-fit m-auto my-4">
@@ -64,7 +66,11 @@ const HindiTranslator = () => {
                 className="dark:bg-black border border-solid border-black rounded p-1 text-lg"
                 id="language"
                 name="language"
-                onChange={(e) => setLanguage(e.target.value)}
+                onChange={(e) => {
+                  if (e.target.value !== undefined) {
+                    setLanguage(e.target.value);
+                  }
+                }}
                 value={language}
               >
                 <option value="hi">Hindi</option>
@@ -86,7 +92,7 @@ const HindiTranslator = () => {
                 name=""
                 readOnly
                 value={loading ? "...Loading" : output}
-               />
+              />
             </div>
           </div>
         </div>
