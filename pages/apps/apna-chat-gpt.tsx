@@ -1,18 +1,23 @@
-import React, { Fragment, useState } from "react";
+import React, { ChangeEvent, Fragment, KeyboardEvent, useState } from "react";
 import Head from "next/head";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
-import Theme from "@/utils/Theme";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../utils/Theme";
+import BackTo from "../../components/buttons/BackTo";
 
-const ApnaChatGpt = () => {
-  const [question, setQuestion] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [questionPreview, setQuestionPreview] = useState("");
-  const [answer, setAnswer] = useState();
-  const [history, setHistory] = useState([]);
+interface History {
+  question: string;
+  answer: string;
+}
 
-  const enterHit = (e) => {
+const ApnaChatGpt: React.FC = () => {
+  const [question, setQuestion] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [questionPreview, setQuestionPreview] = useState<string>("");
+  const [answer, setAnswer] = useState<string>("");
+  const [history, setHistory] = useState<History[]>([]);
+
+  const enterHit = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
       generateAnswer();
     }
@@ -34,7 +39,7 @@ const ApnaChatGpt = () => {
       setAnswer(data.answer);
       setHistory([{ question, answer: data.answer }, ...history]);
       console.log(data.answer);
-    } catch (error) {
+    } catch (error: AxiosError | any) {
       console.log(error);
       alert(error?.response?.data?.message || error);
     }
@@ -57,7 +62,9 @@ const ApnaChatGpt = () => {
                 className="dark:bg-black p-3 py-1.5 rounded text-lg block w-[100%] border border-solid border-gray-500 dark:border-white"
                 id="question"
                 name="question"
-                onChange={(e) => setQuestion(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setQuestion(e.target.value)
+                }
                 onKeyDown={enterHit}
                 placeholder="Ask any question..."
                 type="text"
@@ -76,14 +83,14 @@ const ApnaChatGpt = () => {
 
               {answer !== ""
                 ? history
-                    .filter((data, key) => key !== 0)
-                    .map((data, key) => (
+                    .filter((data: History, key: number) => key !== 0)
+                    .map((data: History, key: number) => (
                       <div className="mt-5" key={key}>
                         <p>{"Q. " + data.question}</p>
                         <div>{"Ans => " + data.answer}</div>
                       </div>
                     ))
-                : history.map((data, key) => (
+                : history.map((data: History, key: number) => (
                     <div className="mt-5" key={key}>
                       <p>{"Q. " + data.question}</p>
                       <div>{"Ans => " + data.answer}</div>
