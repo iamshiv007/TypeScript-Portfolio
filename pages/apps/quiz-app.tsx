@@ -1,27 +1,27 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { ChangeEvent, Fragment, useEffect, useState } from "react";
 import Head from "next/head";
 import axios from "axios";
 import he from "he";
 import { TiTick } from "react-icons/ti";
 import { ImCross } from "react-icons/im";
 
-import Theme from "@/utils/Theme";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../utils/Theme";
+import BackTo from "../../components/buttons/BackTo";
 
-const QuizApp = () => {
-  const [question, setQuestion] = useState();
-  const [options, setOptions] = useState([]);
-  const [correctAnswer, setCorrectAnswer] = useState();
-  const [answer, setAnswer] = useState();
-  const [loading, setLoading] = useState(true);
-  const [category, setCategory] = useState("");
+const QuizApp: React.FC = () => {
+  const [question, setQuestion] = useState<string>("");
+  const [options, setOptions] = useState<string[]>([]);
+  const [correctAnswer, setCorrectAnswer] = useState<string>("");
+  const [answer, setAnswer] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true);
+  const [category, setCategory] = useState<string>("");
 
   useEffect(() => {
     generateQuestion();
   }, []);
 
   const generateQuestion = () => {
-    setAnswer();
+    setAnswer("");
     setLoading(true);
     axios
       .get("https://opentdb.com/api.php?amount=1&type=multiple")
@@ -74,7 +74,7 @@ const QuizApp = () => {
                       className="mr-3 cursor-pointer"
                       id={option}
                       name="answer"
-                      onChange={(e) => {
+                      onChange={(e: ChangeEvent<HTMLInputElement>) => {
                         if (!answer) setAnswer(e.target.value);
                       }}
                       type="checkbox"
