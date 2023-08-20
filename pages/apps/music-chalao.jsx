@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import Head from "next/head";
 import axios from "axios";
 
-import Theme from "@/utils/Theme";
+import Theme from "../../utils/Theme";
 
 const MusicChalao = () => {
   const [songs, setSongs] = useState({});
