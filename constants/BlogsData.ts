@@ -1,4 +1,11 @@
-export const BlogsData = [
+export interface Blog {
+  name: string;
+  imageUrl: string;
+  linkName: string;
+  date: string;
+}
+
+export const BlogsData: Blog[] = [
   {
     name: "Why we should move in to Next js",
     imageUrl:

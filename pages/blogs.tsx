@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
-import { BlogsData } from "../constants";
+import { BlogsData, Blog } from "../constants";
 import Theme from "../utils/Theme";
 import BackTo from "../components/buttons/BackTo";
 
@@ -25,7 +25,7 @@ const BlogsPage: React.FC = () => {
               columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 4 }}
             >
               <Masonry>
-                {BlogsData.map((blog) => (
+                {BlogsData.map((blog: Blog) => (
                   <div
                     className="dark:bg-gray-900 rounded-md border border-gray-400 border-solid m-2"
                     key={blog.name}

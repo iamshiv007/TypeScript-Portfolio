@@ -3,10 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { BsPenFill } from "react-icons/bs";
 
-import { BlogsData } from "@/constants";
-import AnimatedButton from "@/components/buttons/AnimatedButton";
+import { BlogsData, Blog } from "../constants";
+import AnimatedButton from "../components/buttons/AnimatedButton";
 
-const LatestBlogs = () => {
+const LatestBlogs: React.FC = () => {
   return (
     <Fragment>
       <section id="blogs">
@@ -20,7 +20,7 @@ const LatestBlogs = () => {
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 rounded-md mx-6">
             {BlogsData.slice(-4)
               .reverse()
-              .map((blog) => (
+              .map((blog: Blog) => (
                 <div key={blog.name}>
                   <Link href={`/blogs/${blog.linkName}`}>
                     <div className="h-fit dark:bg-gray-900 rounded-md border border-gray-400 border-solid">

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-const AnimatedButton = () => (
+const AnimatedButton: React.FC = () => (
   <Link href="/blogs">
     <motion.button
       animate={{ rotate: 0, scale: 1 }}
