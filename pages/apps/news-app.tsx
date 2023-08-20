@@ -5,17 +5,33 @@ import axios from "axios";
 import { AiOutlineMenu } from "react-icons/ai";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
-import Theme from "@/utils/Theme";
-import { savedArticles } from "@/constants/NewsData";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../utils/Theme";
+import { OldNews, News } from "../../constants/OldNews";
+import BackTo from "../../components/buttons/BackTo";
 
-const NewsApp = () => {
-  const [articles, setArticles] = useState(savedArticles);
-  const [category, setCategory] = useState("general");
-  const [country, setCountry] = useState("in");
-  const [language, setLanguage] = useState("en");
-  const [loading, setLoading] = useState(false);
-  const [filter, setFilter] = useState(false);
+interface FiltersProps {
+  filter: boolean;
+  language: string;
+  country: string;
+  category: string;
+  setLanguage: React.Dispatch<React.SetStateAction<string>>;
+  setCountry: React.Dispatch<React.SetStateAction<string>>;
+  setCategory: React.Dispatch<React.SetStateAction<string>>;
+  loadNews: () => void;
+}
+
+interface MyMasonryProps {
+  loading: boolean;
+  articles: News[] | undefined;
+}
+
+const NewsApp: React.FC = () => {
+  const [articles, setArticles] = useState<News[]>(OldNews);
+  const [category, setCategory] = useState<string>("general");
+  const [country, setCountry] = useState<string>("in");
+  const [language, setLanguage] = useState<string>("en");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [filter, setFilter] = useState<boolean>(false);
 
   useEffect(() => {
     setLoading(true);
@@ -24,7 +40,7 @@ const NewsApp = () => {
       .get("/api/news?category=general&lang=en&country=in&max=10")
       .then((res) => {
         if (!res.data.success) {
-          setArticles(savedArticles);
+          setArticles(OldNews);
           setLoading(false);
           alert("Not Found1 : Showing Old News");
         } else {
@@ -38,7 +54,7 @@ const NewsApp = () => {
       .catch((err) => {
         alert(err?.response?.data?.message || err.message || err);
         alert("Not Found2 : Showing Old News");
-        setArticles(savedArticles);
+        setArticles(OldNews);
         setLoading(false);
       });
   }, []);
@@ -59,7 +75,7 @@ const NewsApp = () => {
         }
       })
       .catch((err) => {
-        setArticles(savedArticles);
+        setArticles(OldNews);
         alert("Not Found : Showing Old News");
         setLoading(false);
       });
@@ -105,7 +121,7 @@ const NewsApp = () => {
 
 export default NewsApp;
 
-const Filters = ({
+const Filters: React.FC<FiltersProps> = ({
   filter,
   language,
   country,
@@ -206,15 +222,27 @@ const Filters = ({
   );
 };
 
-const MyMasonry = ({ loading, articles }) => {
-  const descFun = (e) => {
-    e.target.style.display = "none";
-    e.target.nextElementSibling.style.display = "block";
+const MyMasonry: React.FC<MyMasonryProps> = ({ loading, articles }) => {
+  const descFun = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLDivElement;
+    if (target.style) {
+      target.style.display = "none";
+      const nextSibling = target.nextElementSibling as HTMLDivElement;
+      if (nextSibling) {
+        nextSibling.style.display = "block";
+      }
+    }
   };
 
-  const descFun2 = (e) => {
-    e.target.style.display = "none";
-    e.target.previousElementSibling.style.display = "block";
+  const descFun2 = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLDivElement;
+    if (target.style) {
+      target.style.display = "none";
+      const previousSibling = target.previousElementSibling as HTMLDivElement;
+      if (previousSibling) {
+        previousSibling.style.display = "block";
+      }
+    }
   };
 
   return (
