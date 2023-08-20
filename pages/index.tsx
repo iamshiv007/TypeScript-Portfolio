@@ -6,6 +6,7 @@ const Navbar = dynamic(() => import("../layout/Navbar"));
 const Intro = dynamic(() => import("../sections/Intro"));
 const SocialMedia = dynamic(() => import("../utils/SocialMedia"));
 const Skills = dynamic(() => import("../sections/Skills"));
+const Projects = dynamic(() => import("../sections/Projects"));
 
 const Home: React.FC = () => {
   return (
@@ -76,6 +77,8 @@ const Home: React.FC = () => {
           <SocialMedia />
           {/* Skills */}
           <Skills />
+          {/* Projects */}
+          <Projects />
         </div>
       </div>
     </Fragment>

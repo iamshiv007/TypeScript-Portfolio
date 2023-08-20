@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import Image from "next/image";
 import { CgClapperBoard } from "react-icons/cg";
 
-import { ProjectsData } from "@/constants";
+import { ProjectsData, Project } from "../constants";
 
 export const Projects = () => {
   return (
@@ -19,7 +19,7 @@ export const Projects = () => {
           </div>
 
           <div className="flex flex-wrap gap-6 mx-6 justify-center">
-            {ProjectsData.map((project) => (
+            {ProjectsData.map((project: Project) => (
               <div key={project.name}>
                 <a href={project.url} target="_blank">
                   <Image

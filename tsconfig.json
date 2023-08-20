@@ -11,9 +11,7 @@
         "./src/*"
       ]
     },
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
@@ -22,7 +20,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve" // Choose either "react-jsx" or "react-jsxdev", not "preserve"
+    "jsx": "react-jsx" 
   },
   "include": [
     "next-env.d.ts",
@@ -33,3 +31,4 @@
     "node_modules"
   ]
 }
+
