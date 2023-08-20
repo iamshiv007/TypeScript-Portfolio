@@ -1,4 +1,11 @@
-export const JourneyData = [
+export interface JourneyItem {
+  heading: string;
+  time: string;
+  image: string;
+  summary: string | JSX.Element;
+}
+
+export const JourneyData: JourneyItem[] = [
   {
     heading: "School",
     time: "2015-2019",
@@ -34,14 +41,14 @@ export const JourneyData = [
   {
     heading: "First Internship",
     time: "1 dec 2022 to 15 march 2023",
+    image: "",
     summary: (
       <div>
-        {" "}
         <p>
-          Company : Millennia Ahead Technology pvt. ltd. (Nagpur, Maharashtra)
+          Company Millennia Ahead Technology pvt. ltd. (Nagpur, Maharashtra)
         </p>
-        <p>Mode : Remote (Work From Home)</p> I obtained my first internship
-        after learning coding from YouTube in 5 months. Essentially, it is a
+        <p>Mode Remote (Work From Home)</p> I obtained my first internship after
+        learning coding from YouTube in 5 months. Essentially, it is a
         startup-based company where all team members, including myself, are
         working on an online salon appointment booking application. This is my
         first experience with a real-world project, and I have learned a lot
@@ -55,6 +62,7 @@ export const JourneyData = [
   {
     heading: "Second Internship",
     time: "24 Apr 2023  to 10 July 2022",
+    image: "",
     summary: (
       <div>
         <p>Company : Good Tech Mind (Kolkata, West Benal)</p>
@@ -63,11 +71,11 @@ export const JourneyData = [
         intern job. So, I went for more than 5 interviews in two months. It was
         a little challenging to get shortlisted for interviews because I focused
         on learning web development and the mathematics involved. As a result, I
-        didn&apos;t create many projects to showcase and was not aware of GitHub.
-        Subsequently, I joined a remote non-paid internship that would pay me
-        after two months. However, due to a lack of response and slow progress,
-        my trust was broken, and I quit the internship. Nevertheless, I worked
-        on three full-stack projects during that time, which boosted my
+        didn&apos;t create many projects to showcase and was not aware of
+        GitHub. Subsequently, I joined a remote non-paid internship that would
+        pay me after two months. However, due to a lack of response and slow
+        progress, my trust was broken, and I quit the internship. Nevertheless,
+        I worked on three full-stack projects during that time, which boosted my
         confidence to undertake and complete any project using the MERN stack.
       </div>
     ),

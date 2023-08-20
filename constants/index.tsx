@@ -1,10 +1,10 @@
 import { SocialMediaData, SocialMedia } from "./SocialMediaData";
-// import { AppsData } from "./AppsData";
-import { BlogsData, Blog } from "./BlogsData";
-// import { NewsData } from "./NewsData";
 import { SkillsData, Skill } from "./SkillsData";
-// import { JourneyData } from "./JourneyData";
 import { ProjectsData, Project } from "./ProjectsData";
+import { BlogsData, Blog } from "./BlogsData";
+import { JourneyData, JourneyItem } from "./JourneyData";
+// import { AppsData } from "./AppsData";
+// import { NewsData } from "./NewsData";
 
-export { SkillsData, SocialMediaData, ProjectsData, BlogsData };
-export type { Skill, SocialMedia, Project, Blog };
+export { SocialMediaData, SkillsData, ProjectsData, BlogsData, JourneyData };
+export type { SocialMedia, Skill, Project, Blog, JourneyItem };

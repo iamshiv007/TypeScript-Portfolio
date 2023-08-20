@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, MouseEventHandler } from "react";
 import Image from "next/image";
 import { GiRailRoad } from "react-icons/gi";
 
@@ -10,10 +10,9 @@ import {
   FirstInternship,
   SecondInternship,
 } from "./journeyParts";
+import { JourneyData, JourneyItem } from "../constants";
 
-import { JourneyData } from "@/constants";
-
-const Journey = () => {
+const Journey: React.FC = () => {
   return (
     <Fragment>
       <div className="dark:bg-black bg-[#ecf8f9] overflow-x-hidden py-8">
@@ -54,34 +53,33 @@ const Journey = () => {
 
 export default Journey;
 
-const MobileScreenJourney = () => {
-  const visibleFun = (e) => {
-    const smallBorder =
-      e.target.parentElement.parentElement.nextElementSibling.classList;
+const MobileScreenJourney: React.FC = () => {
+  const visibleFun: MouseEventHandler<HTMLParagraphElement> = (e) => {
+    const smallBorder = (e.target as HTMLElement).parentElement?.parentElement
+      ?.nextElementSibling!.classList;
 
-    const detailBox =
-      e.target.parentElement.parentElement.nextElementSibling.nextElementSibling
-        .classList;
+    const detailBox = (e.target as HTMLElement).parentElement?.parentElement
+      ?.nextElementSibling?.nextElementSibling!.classList;
 
-    if (smallBorder.contains("h-0")) {
-      smallBorder.replace("h-0", "h-[20px]");
-      smallBorder.replace("border-0", "border");
+    if (smallBorder?.contains("h-0")) {
+      smallBorder?.replace("h-0", "h-[20px]");
+      smallBorder?.replace("border-0", "border");
     } else {
-      smallBorder.replace("h-[20px]", "h-0");
-      smallBorder.replace("border", "border-0");
+      smallBorder?.replace("h-[20px]", "h-0");
+      smallBorder?.replace("border", "border-0");
     }
 
-    if (detailBox.contains("h-0")) {
-      detailBox.replace("h-0", "min-h-[300px]");
+    if (detailBox?.contains("h-0")) {
+      detailBox?.replace("h-0", "min-h-[300px]");
     } else {
-      detailBox.replace("min-h-[300px]", "h-0");
+      detailBox?.replace("min-h-[300px]", "h-0");
     }
   };
   return (
     <>
       <div className="mx-[5%] pb-10 md:hidden">
-        {JourneyData.map((journey, key) => (
-          <React.Fragment key={key}>
+        {JourneyData.map((journey: JourneyItem) => (
+          <React.Fragment key={journey.heading}>
             <div className="h-[50px] border dark:border-white border-[black] m-auto w-fit" />
 
             <div className="border-2 dark:border-white border-[black] border-solid rounded">

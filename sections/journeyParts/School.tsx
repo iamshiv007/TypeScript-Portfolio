@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import Image from "next/image";
 
-import { JourneyData } from "@/constants";
+import { JourneyData } from "../../constants";
 
-export const School = () => {
+export const School: React.FC = () => {
   return (
     <Fragment>
       <div className="md:mr-4 mr-0 md:justify-around flex md:flex-row flex-col md:items-start items-center">
