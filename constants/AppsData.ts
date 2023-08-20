@@ -1,4 +1,13 @@
-export const AppsData = [
+export interface App {
+  name: string;
+  imageUrl: string;
+  imageLight: string;
+  iconUrl: string;
+  linkName: string;
+  date: string;
+}
+
+export const AppsData: App[] = [
   {
     name: "Tic-Tac-Toe",
     imageUrl: "/images/tic-tac-toe.png",

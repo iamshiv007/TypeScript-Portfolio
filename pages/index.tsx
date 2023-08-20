@@ -9,6 +9,7 @@ const Skills = dynamic(() => import("../sections/Skills"));
 const Projects = dynamic(() => import("../sections/Projects"));
 const LatestBlogs = dynamic(() => import("../sections/LatestBlogs"));
 const Journey = dynamic(() => import("../sections/Journey"));
+const Apps = dynamic(() => import("../sections/Apps"));
 
 const Home: React.FC = () => {
   return (
@@ -85,6 +86,8 @@ const Home: React.FC = () => {
           <LatestBlogs />
           {/* Journey */}
           <Journey />
+          {/* Apps */}
+          <Apps />
         </div>
       </div>
     </Fragment>

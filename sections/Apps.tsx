@@ -3,10 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { IoMdAppstore } from "react-icons/io";
 
-import { AppsData } from "@/constants";
-import { BlogContext } from "@/contextApi/blogContext";
+import { AppsData, App } from "../constants";
+import { BlogContext } from "../contextApi/blogContext";
 
-const Apps = () => {
+const Apps: React.FC = () => {
   const { dark } = useContext(BlogContext);
 
   return (
@@ -22,8 +22,8 @@ const Apps = () => {
         </h3>
 
         <div className="md:grid hidden md:grid-cols-5 grid-cols-3 justify-center mx-8 gap-5">
-          {AppsData.map((app, key) => (
-            <div className="overflow-hidden" key={key}>
+          {AppsData.map((app: App) => (
+            <div className="overflow-hidden" key={app.name}>
               <Link href={`/${app.linkName}`}>
                 <Image
                   alt="app"
