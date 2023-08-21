@@ -1,5 +1,6 @@
 import React from "react";
 import { AppProps } from "next/app";
+import { Analytics } from "@vercel/analytics/react";
 
 import "../styles/globals.css";
 import "../styles/animation.css";
@@ -12,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <BlogProvider>
       <Component {...pageProps} />
+      <Analytics />
     </BlogProvider>
   );
 }

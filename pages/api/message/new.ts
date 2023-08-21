@@ -1,12 +1,15 @@
-// pages/api/send-email.js
 import { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from "nodemailer";
+
+import { connectDb } from "../../../database/connect";
+import { Mail } from "../../../models/mail";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
+    connectDb();
     const { name, email, message, subject } = req.body;
 
     // Replace these with your actual email service settings
@@ -27,7 +30,8 @@ export default async function handler(
 
     try {
       await transporter.sendMail(mailOptions);
-      res.status(200).json({ message: "Email sent successfully" });
+      const mail = await Mail.create(req.body);
+      res.status(200).json({ mail: mail, message: "Email sent successfully" });
     } catch (error) {
       console.error("Error sending email:", error);
       res

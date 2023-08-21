@@ -3,7 +3,7 @@ import mongoose, { Schema, Document, Model } from "mongoose";
 interface IMail extends Document {
   name: string;
   email: string;
-  subject: number;
+  subject: string;
   message: string;
 }
 
@@ -17,7 +17,7 @@ const mailSchema: Schema<IMail> = new mongoose.Schema({
     required: true,
   },
   subject: {
-    type: Number,
+    type: String,
     required: true,
   },
   message: {
@@ -26,4 +26,7 @@ const mailSchema: Schema<IMail> = new mongoose.Schema({
   },
 });
 
-export const Mail: Model<IMail> = mongoose.model<IMail>("Mail2", mailSchema);
+export const Mail: Model<IMail> = mongoose.model<IMail>(
+  "SecondMail",
+  mailSchema
+);

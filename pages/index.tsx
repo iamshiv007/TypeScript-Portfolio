@@ -12,6 +12,7 @@ const Journey = dynamic(() => import("../sections/Journey"));
 const Apps = dynamic(() => import("../sections/Apps"));
 const SendMail = dynamic(() => import("../utils/SendMail"));
 const Footer = dynamic(() => import("../layout/Footer"));
+// const ChatSystem = dynamic(() => import("../utils/ChatSystem"));
 
 const Home: React.FC = () => {
   return (
@@ -94,6 +95,8 @@ const Home: React.FC = () => {
           <SendMail />
           {/* Footer */}
           <Footer />
+          {/* ChatSystem */}
+          {/* <ChatSystem /> */}
         </div>
       </div>
     </Fragment>

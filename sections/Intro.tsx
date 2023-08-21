@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import Image from "next/image";
 
+import Resume from "../utils/Resume";
+
 const Intro: React.FC = () => {
   return (
     <Fragment>
@@ -28,6 +30,7 @@ const Intro: React.FC = () => {
                 src="/images/cartoon 0.png"
                 width={300}
               />
+              <Resume />
             </div>
           </div>
         </div>

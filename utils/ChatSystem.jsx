@@ -1,25 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Talk from "talkjs";
 
 const ChatSystem = () => {
+  const [talkLoaded, markTalkLoaded] = useState(false);
+  // wait for TalkJS to load
   useEffect(() => {
-    // Tawk.to script
-    var Tawk_API = Tawk_API || {};
-    var Tawk_LoadStart = new Date();
-    (function () {
-      var s1 = document.createElement("script"),
-        s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = "https://embed.tawk.to/64c528c994cf5d49dc672e77/1h6h2em05";
-      s1.charset = "UTF-8";
-      s1.setAttribute("crossorigin", "*");
-      s0.parentNode.insertBefore(s1, s0);
+    if (talkLoaded) {
+      Talk.ready.then(function () {
+        var me = new Talk.User({
+          id: "123456",
+          name: "Alice",
+          email: "alice@example.com",
+          photoUrl: "https://talkjs.com/images/avatar-1.jpg",
+          welcomeMessage: "Hey there! How are you? :-)",
+        });
+        window.talkSession = new Talk.Session({
+          appId: "YOUR_APP_ID",
+          me: me,
+        });
+        var other = new Talk.User({
+          id: "654321",
+          name: "Sebastian",
+          email: "Sebastian@example.com",
+          photoUrl: "https://talkjs.com/images/avatar-5.jpg",
+          welcomeMessage: "Hey, how can I help?",
+        });
 
-      window.Tawk_API = window.Tawk_API || {};
-      window.Tawk_API.customStyle = {
-        zIndex: 2,
-      };
-    })();
-  }, []);
+        var conversation = talkSession.getOrCreateConversation(
+          Talk.oneOnOneId(me, other)
+        );
+        conversation.setParticipant(me);
+        conversation.setParticipant(other);
+
+        var inbox = talkSession.createInbox({ selected: conversation });
+        inbox.mount(document.getElementById("talkjs-container"));
+      });
+    }
+  }, [talkLoaded]);
 
   return <></>; // The component doesn't need to render anything, it's just for the script to run.
 };
