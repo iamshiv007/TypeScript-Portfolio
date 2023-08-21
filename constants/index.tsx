@@ -1,3 +1,4 @@
+import { NavbarData, Navbar } from "./NavbarData";
 import { SocialMediaData, SocialMedia } from "./SocialMediaData";
 import { SkillsData, Skill } from "./SkillsData";
 import { ProjectsData, Project } from "./ProjectsData";
@@ -7,6 +8,7 @@ import { AppsData, App } from "./AppsData";
 import { OldNews, News } from "./OldNews";
 
 export {
+  NavbarData,
   SocialMediaData,
   SkillsData,
   ProjectsData,
@@ -15,4 +17,14 @@ export {
   AppsData,
   OldNews,
 };
-export type { SocialMedia, Skill, Project, Blog, JourneyItem, App, News };
+
+export type {
+  Navbar,
+  SocialMedia,
+  Skill,
+  Project,
+  Blog,
+  JourneyItem,
+  App,
+  News,
+};

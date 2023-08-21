@@ -5,11 +5,11 @@ import { RiCloseLine, RiSunFill } from "react-icons/ri";
 import { BsFillMoonFill } from "react-icons/bs";
 
 import { BlogContext } from "../contextApi/blogContext";
-import { NavbarData } from "../constants/NavbarData";
+import { NavbarData, Navbar } from "../constants";
 
-const MobileNavbar = () => {
+const MobileNavbar: React.FC = () => {
   const { dark, setDark } = useContext(BlogContext);
-  const [menu, setMenu] = useState(false);
+  const [menu, setMenu] = useState<boolean>(false);
 
   return (
     <Fragment>
@@ -35,14 +35,14 @@ const MobileNavbar = () => {
             </button>
           </div>
           <div className="flex flex-col gap-4">
-            {NavbarData.map((item) => (
+            {NavbarData.map((item: Navbar) => (
               <div key={item.name}>
                 <Link
                   className="navLinksMobile"
                   href={item.link}
                   onClick={() => setMenu(!menu)}
                 >
-                  {item.icon} {item.name}
+                  {React.createElement(item.icon)} {item.name}
                 </Link>
               </div>
             ))}

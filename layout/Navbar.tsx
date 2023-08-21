@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BsFillMoonFill } from "react-icons/bs";
 import { DiTechcrunch } from "react-icons/di";
 
-import { NavbarData } from "../constants/NavbarData";
+import { NavbarData, Navbar } from "../constants";
 
 const Navbar: React.FC = () => {
   return (
@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-12">
-          {NavbarData.map((item) => (
+          {NavbarData.map((item: Navbar) => (
             <Link className="navLinks" href={item.link} key={item.name}>
               {item.name}
             </Link>
