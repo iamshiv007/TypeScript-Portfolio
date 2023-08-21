@@ -26,6 +26,7 @@
     "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^14.0.0",
     "@types/he": "^1.2.0",
+    "@types/nodemailer": "^6.4.9",
     "@types/react": "18.2.20",
     "@types/react-responsive-masonry": "^2.1.0",
     "@types/react-syntax-highlighter": "^15.5.7",

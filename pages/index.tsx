@@ -10,6 +10,8 @@ const Projects = dynamic(() => import("../sections/Projects"));
 const LatestBlogs = dynamic(() => import("../sections/LatestBlogs"));
 const Journey = dynamic(() => import("../sections/Journey"));
 const Apps = dynamic(() => import("../sections/Apps"));
+const SendMail = dynamic(() => import("../utils/SendMail"));
+const Footer = dynamic(() => import("../layout/Footer"));
 
 const Home: React.FC = () => {
   return (
@@ -88,6 +90,10 @@ const Home: React.FC = () => {
           <Journey />
           {/* Apps */}
           <Apps />
+          {/* SendMail */}
+          <SendMail />
+          {/* Footer */}
+          <Footer />
         </div>
       </div>
     </Fragment>

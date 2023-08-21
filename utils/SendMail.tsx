@@ -1,16 +1,32 @@
-import React, { Fragment, useState } from "react";
+import React, { FormEvent, Fragment, useState } from "react";
 import axios from "axios";
 import { FiMessageCircle } from "react-icons/fi";
 
-const SendMail = () => {
-  const [formData, setFormData] = useState({});
-  const [sending, setSending] = useState(false);
+interface Message {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
-  const collectData = (e) => {
+let initialData = {
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+};
+
+const SendMail = () => {
+  const [formData, setFormData] = useState<Message>(initialData);
+  const [sending, setSending] = useState<boolean>(false);
+
+  const collectData = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const sendMessage = (e) => {
+  const sendMessage = (e: FormEvent) => {
     e.preventDefault();
 
     const { name, email, message, subject } = formData;
@@ -26,7 +42,7 @@ const SendMail = () => {
         console.log(res.data);
         setSending(false);
         alert("Message Sended Successfully");
-        setFormData({});
+        setFormData(initialData);
       })
       .catch((err) => {
         console.log(err);
@@ -53,7 +69,7 @@ const SendMail = () => {
               name="name"
               onChange={collectData}
               placeholder="Your Good Name"
-              value={formData.name || ""}
+              value={formData.name}
             />
             <input
               className="dark:bg-black border dark:border-[#07d0e5] border-[#c72c6c] p-2 rounded"
@@ -61,7 +77,7 @@ const SendMail = () => {
               name="email"
               onChange={collectData}
               placeholder="Your Email Address"
-              value={formData.email || ""}
+              value={formData.email}
             />
             <input
               className="dark:bg-black border dark:border-[#07d0e5] border-[#c72c6c] p-2 rounded"
@@ -69,7 +85,7 @@ const SendMail = () => {
               name="subject"
               onChange={collectData}
               placeholder="Subject for mail"
-              value={formData.subject || ""}
+              value={formData.subject}
             />
 
             <textarea
@@ -78,8 +94,8 @@ const SendMail = () => {
               name="message"
               onChange={collectData}
               placeholder="Write Your Message"
-              rows="3"
-              value={formData.message || ""}
+              rows={3}
+              value={formData.message}
             />
 
             <button
