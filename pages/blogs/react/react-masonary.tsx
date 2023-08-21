@@ -9,7 +9,7 @@ import BackTo from "../../../components/buttons/BackTo";
 interface Photo {
   id: number;
   src: {
-    small: string;
+    medium: string;
   };
   url: string;
   photographer: string;
@@ -67,12 +67,18 @@ const ReactMasonary: React.FC = () => {
                 return (
                   <div key={photo.id} style={{ margin: "10px" }}>
                     <button
-                      onClick={() => handleDownload(photo.src.small, photo.url)}
+                      onClick={() =>
+                        handleDownload(photo.src.medium, photo.url)
+                      }
                     >
                       Download
                     </button>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img alt={photo.photographer} src={photo.src.small} />
+                    <img
+                      alt={photo.photographer}
+                      className="w-[100%]"
+                      src={photo.src.medium}
+                    />
                   </div>
                 );
               })}
