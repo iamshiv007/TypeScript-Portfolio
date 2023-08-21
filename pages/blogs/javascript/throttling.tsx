@@ -3,11 +3,15 @@ import React, { Fragment, useContext, useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { github, dark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-import Theme from "@/utils/Theme";
-import { BlogContext } from "@/contextApi/blogContext";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../../utils/Theme";
+import { BlogContext } from "../../../contextApi/blogContext";
+import BackTo from "../../../components/buttons/BackTo";
 
-const Throttling = () => {
+interface Props {
+  myDark: boolean;
+}
+
+const Throttling: React.FC = () => {
   const { dark: myDark } = useContext(BlogContext);
 
   return (
@@ -52,7 +56,7 @@ const Throttling = () => {
 
 export default Throttling;
 
-const Example1 = ({ myDark }) => {
+const Example1: React.FC<Props> = ({ myDark }) => {
   const codeString = `const Example1 = () => {
         const [isTime, setIsTime] = useState(false);
         const [count, setCount] = useState(0);
@@ -81,10 +85,10 @@ const Example1 = ({ myDark }) => {
         );
       };`;
 
-  const [isTime, setIsTime] = useState(false);
-  const [count, setCount] = useState(0);
+  const [isTime, setIsTime] = useState<boolean>(false);
+  const [count, setCount] = useState<number>(0);
 
-  const throttleFun = (call, delay) => {
+  const throttleFun = (call: () => void, delay: number) => {
     return function () {
       if (isTime) return;
       setIsTime(true);

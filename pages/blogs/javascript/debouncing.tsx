@@ -3,11 +3,15 @@ import Head from "next/head";
 import { github, dark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
-import Theme from "@/utils/Theme";
-import { BlogContext } from "@/contextApi/blogContext";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../../utils/Theme";
+import { BlogContext } from "../../../contextApi/blogContext";
+import BackTo from "../../../components/buttons/BackTo";
 
-const Debouncing = () => {
+interface Props {
+  myDark: boolean;
+}
+
+const Debouncing:React.FC = () => {
   const { dark: myDark } = useContext(BlogContext);
 
   return (
@@ -53,7 +57,7 @@ const Debouncing = () => {
 
 export default Debouncing;
 
-const Example1 = ({ myDark }) => {
+const Example1: React.FC<Props> = ({ myDark }) => {
   const codeString = `const Example1 = () => {
   const debounceFun = (fun, delay) => {
     var timer;
@@ -79,8 +83,8 @@ const Example1 = ({ myDark }) => {
   );
 };`;
 
-  const debounceFun = (fun, delay) => {
-    var timer;
+  const debounceFun = (fun: () => void, delay: number) => {
+    var timer: NodeJS.Timeout;
 
     return function () {
       clearTimeout(timer);

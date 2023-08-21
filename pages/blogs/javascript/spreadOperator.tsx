@@ -3,9 +3,13 @@ import Head from "next/head";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { github, dark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-import Theme from "@/utils/Theme";
-import { BlogContext } from "@/contextApi/blogContext";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../../utils/Theme";
+import { BlogContext } from "../../../contextApi/blogContext";
+import BackTo from "../../../components/buttons/BackTo";
+
+interface Props {
+  myDark: boolean;
+}
 
 const SpreadOperator = () => {
   const { dark: myDark } = useContext(BlogContext);
@@ -64,13 +68,15 @@ const SpreadOperator = () => {
 
 export default SpreadOperator;
 
-const Example1 = ({ myDark }) => {
+const Example1: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const Example1 = () => {
     // Array Clone
+
+    type Numbers = number[];
   
-    const numbers = [1, 2, 3];
+    const numbers: Numbers = [1, 2, 3];
   
-    const newNumbers = [...numbers];
+    const newNumbers: Numbers = [...numbers];
   
     console.log(newNumbers); // [1, 2, 3]
   
@@ -81,9 +87,11 @@ const Example1 = ({ myDark }) => {
   `;
   // Array Clone
 
-  const numbers = [1, 2, 3];
+  type Numbers = number[];
 
-  const newNumbers = [...numbers];
+  const numbers: Numbers = [1, 2, 3];
+
+  const newNumbers: Numbers = [...numbers];
 
   console.log(newNumbers);
 
@@ -102,14 +110,16 @@ const Example1 = ({ myDark }) => {
   );
 };
 
-const Example2 = ({ myDark }) => {
+const Example2: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const Example2 = () => {
     // Combine Array
+
+    type Numbers = number[];
+
+    const numbers1: Numbers = [1, 2, 3];
+    const numbers2: Numbers = [4, 5, 6];
   
-    const numbers1 = [1, 2, 3];
-    const numbers2 = [4, 5, 6];
-  
-    const combineArray = [...numbers1, ...numbers2];
+    const combineArray: Numbers = [...numbers1, ...numbers2];
   
     console.log(combineArray); // [1, 2, 3, 4, 5, 6]
   
@@ -117,10 +127,12 @@ const Example2 = ({ myDark }) => {
   };`;
   //Combine Array
 
-  const numbers1 = [1, 2, 3];
-  const numbers2 = [4, 5, 6];
+  type Numbers = number[];
 
-  const combineArray = [...numbers1, ...numbers2];
+  const numbers1: Numbers = [1, 2, 3];
+  const numbers2: Numbers = [4, 5, 6];
+
+  const combineArray: Numbers = [...numbers1, ...numbers2];
 
   console.log(combineArray);
 
@@ -139,14 +151,16 @@ const Example2 = ({ myDark }) => {
   );
 };
 
-const Example3 = ({ myDark }) => {
+const Example3: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const Example3 = () => {
     // Compose
   
-    const numbers1 = [1, 2, 3];
-    const numbers2 = [4, 5, 6];
-  
-    const composedArray = [100, ...numbers1, ...numbers2, 200];
+    type Numbers = number[];
+
+    const numbers1: Numbers = [1, 2, 3];
+    const numbers2: Numbers = [4, 5, 6];
+
+    const composedArray: Numbers = [100, ...numbers1, ...numbers2, 200];
   
     console.log(composedArray); // [100, 1, 2, 3, 4, 5, 6, 200]
   
@@ -154,10 +168,12 @@ const Example3 = ({ myDark }) => {
   };`;
   //Compose
 
-  const numbers1 = [1, 2, 3];
-  const numbers2 = [4, 5, 6];
+  type Numbers = number[];
 
-  const composedArray = [100, ...numbers1, ...numbers2, 200];
+  const numbers1: Numbers = [1, 2, 3];
+  const numbers2: Numbers = [4, 5, 6];
+
+  const composedArray: Numbers = [100, ...numbers1, ...numbers2, 200];
 
   console.log(composedArray);
 
@@ -176,13 +192,13 @@ const Example3 = ({ myDark }) => {
   );
 };
 
-const Example4 = ({ myDark }) => {
+const Example4: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const Example4 = () => {
     //string
   
-    const string = "iamshiv";
-  
-    const stringArray = [...string];
+    const myString: string = "iamshiv";
+
+    const stringArray: string[] = myString.split("");
   
     console.log(stringArray); // ["i", "a", "m", "s", "h", "i", "v"]
   
@@ -191,9 +207,9 @@ const Example4 = ({ myDark }) => {
   `;
   //string
 
-  const string = "iamshiv";
+  const myString: string = "iamshiv";
 
-  const stringArray = [...string];
+  const stringArray: string[] = myString.split("");
 
   console.log(stringArray);
 
@@ -212,17 +228,23 @@ const Example4 = ({ myDark }) => {
   );
 };
 
-const Example5 = ({ myDark }) => {
+const Example5: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const Example5 = () => {
     // Object Clone
   
-    const order = {
+    type Order = {
+      productName: string;
+      price: number;
+      quantity: number;
+    };
+  
+    const order: Order = {
       productName: "T-shirt",
       price: 209,
       quantity: 1,
     };
   
-    const newOrder = { ...order };
+    const newOrder: Order = { ...order };  
   
     console.log(newOrder); // { productName: "T-shirt", price: 209, quantity: 1};
   
@@ -230,13 +252,19 @@ const Example5 = ({ myDark }) => {
   };`;
   // Object Clone
 
-  const order = {
+  type Order = {
+    productName: string;
+    price: number;
+    quantity: number;
+  };
+
+  const order: Order = {
     productName: "T-shirt",
     price: 209,
     quantity: 1,
   };
 
-  const newOrder = { ...order };
+  const newOrder: Order = { ...order };
 
   console.log(newOrder);
 
@@ -255,19 +283,22 @@ const Example5 = ({ myDark }) => {
   );
 };
 
-const Example6 = ({ myDark }) => {
+const Example6: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const Example6 = () => {
     // Spread
-  
-    const numbers = [17, 37, 74, 2, 8218, 27];
+    
+    type Numbers = number[];
+
+    const numbers: Numbers = [17, 37, 74, 2, 8218, 27];
   
     console.log(Math.max(...numbers)); // 8281
 
     return <></>;
   };`;
   // Spread
+  type Numbers = number[];
 
-  const numbers = [17, 37, 74, 2, 8218, 27];
+  const numbers: Numbers = [17, 37, 74, 2, 8218, 27];
 
   console.log(Math.max(...numbers));
 
@@ -286,11 +317,11 @@ const Example6 = ({ myDark }) => {
   );
 };
 
-const Example7 = ({ myDark }) => {
+const Example7: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const Example1 = () => {
     // Rest operator packing
   
-    function sum(...numbers) {
+    function sum(...numbers: number[]) {
       console.log(numbers); // [3, 4, 5, 6]
   
       let result = 0;
@@ -307,7 +338,7 @@ const Example7 = ({ myDark }) => {
   };`;
   // Rest operator packing
 
-  function sum(...numbers) {
+  function sum(...numbers: number[]) {
     console.log(numbers);
 
     let result = 0;
@@ -335,11 +366,11 @@ const Example7 = ({ myDark }) => {
   );
 };
 
-const Example8 = ({ myDark }) => {
+const Example8: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const Example2 = () => {
     // Rest
   
-    function sum(number1, number2, ...numbers) {
+    function sum(number1: number, number2: number, ...numbers: number[]) {
       console.log(number1, number2, numbers); // 3, 4, [5, 6]
   
       let result = 0;
@@ -356,7 +387,7 @@ const Example8 = ({ myDark }) => {
   };`;
   // Rest
 
-  function sum(number1, number2, ...numbers) {
+  function sum(number1: number, number2: number, ...numbers: number[]) {
     console.log(number1, number2, numbers);
 
     let result = 0;
@@ -384,11 +415,17 @@ const Example8 = ({ myDark }) => {
   );
 };
 
-const Example9 = ({ myDark }) => {
+const Example9: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const Example3 = () => {
     // Rest operator packing
+
+    type Order = {
+      productName: string;
+      street: string;
+      city: string;
+    };
   
-    const order = {
+    const order:Order = {
       name: "Water bottle",
       street: "Hanuman Nagar",
       city: "Kota",
@@ -402,15 +439,21 @@ const Example9 = ({ myDark }) => {
   };`;
   // Rest operator packing
 
-  const order = {
-    name: "Water bottle",
+  type Order = {
+    productName: string;
+    street: string;
+    city: string;
+  };
+
+  const order: Order = {
+    productName: "Water bottle",
     street: "Hanuman Nagar",
     city: "Kota",
   };
 
-  const { name, ...address } = order;
+  const { productName, ...address } = order;
 
-  console.log(name, address);
+  console.log(productName, address);
 
   return (
     <>

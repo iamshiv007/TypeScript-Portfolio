@@ -3,11 +3,15 @@ import Head from "next/head";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { github, dark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-import Theme from "@/utils/Theme";
-import { BlogContext } from "@/contextApi/blogContext";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../../utils/Theme";
+import { BlogContext } from "../../../contextApi/blogContext";
+import BackTo from "../../../components/buttons/BackTo";
 
-const LetVarConst = () => {
+interface Props  {
+myDark:string
+}
+
+const LetVarConst:React.FC = () => {
   const { dark: myDark } = useContext(BlogContext);
 
   return (
@@ -44,7 +48,7 @@ const LetVarConst = () => {
 
 export default LetVarConst;
 
-const Var = ({ myDark }) => {
+const Var:React.FC<Props> = ({ myDark }) => {
   return (
     <>
       <h3 className="text-xl font-bold mt-6">Var</h3>
@@ -66,7 +70,7 @@ const Var = ({ myDark }) => {
   );
 };
 
-const Example1 = ({ myDark }) => {
+const Example1:React.FC<Props> = ({ myDark }) => {
   const codeString = `  const Example1 = () => {
     var x = 10;
     if (true) {
@@ -120,7 +124,7 @@ const Example1 = ({ myDark }) => {
   );
 };
 
-const Let = ({ myDark }) => {
+const Let:React.FC<Props> = ({ myDark }) => {
   return (
     <>
       <h3 className="text-xl font-bold mt-6">Let</h3>
@@ -141,7 +145,7 @@ const Let = ({ myDark }) => {
   );
 };
 
-const Example2 = ({ myDark }) => {
+const Example2:React.FC<Props> = ({ myDark }) => {
   const codeString = `  const Example2 = () => {
     let x = 10;
     if (10 === 10) {
@@ -181,7 +185,7 @@ const Example2 = ({ myDark }) => {
   );
 };
 
-const Const = ({ myDark }) => {
+const Const:React.FC<Props> = ({ myDark }) => {
   return (
     <>
       <h3 className="text-xl font-bold mt-6">const</h3>
@@ -205,7 +209,7 @@ const Const = ({ myDark }) => {
   );
 };
 
-const Example3 = ({ myDark }) => {
+const Example3:React.FC<Props> = ({ myDark }) => {
   const codeString = `const Example3 = () => {
     const x = 10;
     if (true) {

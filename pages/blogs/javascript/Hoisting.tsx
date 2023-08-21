@@ -3,11 +3,15 @@ import Head from "next/head";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { github, dark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-import Theme from "@/utils/Theme";
-import { BlogContext } from "@/contextApi/blogContext";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../../utils/Theme";
+import { BlogContext } from "../../../contextApi/blogContext";
+import BackTo from "../../../components/buttons/BackTo";
 
-const HoistingComponent = () => {
+interface Props {
+  myDark: boolean;
+}
+
+const HoistingComponent:React.FC = () => {
   const { dark: myDark } = useContext(BlogContext);
 
   return (
@@ -37,7 +41,7 @@ const HoistingComponent = () => {
 
 export default HoistingComponent;
 
-const Example1 = ({ myDark }) => {
+const Example1: React.FC<Props> = ({ myDark }) => {
   const codeString = `  sayHello();
 
   function sayHello() {
@@ -66,7 +70,7 @@ const Example1 = ({ myDark }) => {
   );
 };
 
-const Example2 = ({ myDark }) => {
+const Example2: React.FC<Props> = ({ myDark }) => {
   const codeString = `  console.log(x);
   var x = 5;`;
   return (
@@ -94,7 +98,7 @@ const Example2 = ({ myDark }) => {
   );
 };
 
-const Example3 = ({ myDark }) => {
+const Example3: React.FC<Props> = ({ myDark }) => {
   const codeString = `  function foo() {
     console.log(x);
     var x = 10;

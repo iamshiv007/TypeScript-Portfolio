@@ -3,11 +3,15 @@ import Head from "next/head";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { github, dark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-import { BlogContext } from "@/contextApi/blogContext";
-import Theme from "@/utils/Theme";
-import BackTo from "@/components/buttons/BackTo";
+import { BlogContext } from "../../../contextApi/blogContext";
+import Theme from "../../../utils/Theme";
+import BackTo from "../../../components/buttons/BackTo";
 
-const Closure = () => {
+interface Props {
+  myDark: boolean;
+}
+
+const Closure: React.FC = () => {
   const { dark: myDark } = useContext(BlogContext);
 
   return (
@@ -65,7 +69,7 @@ const Closure = () => {
 
 export default Closure;
 
-const Example1 = ({ myDark }) => {
+const Example1: React.FC<Props> = ({ myDark }) => {
   const codeString = ` function outerFun() {
    var name = "Shivraj";
    function innerFun() {
@@ -93,7 +97,7 @@ const Example1 = ({ myDark }) => {
   );
 };
 
-const Example2 = ({ myDark }) => {
+const Example2: React.FC<Props> = ({ myDark }) => {
   const codeString = ` function outerFun() {
    const blog = "Closure in JavaScript";
    function innerFun() {
@@ -124,7 +128,7 @@ const Example2 = ({ myDark }) => {
   );
 };
 
-const Example3 = ({ myDark }) => {
+const Example3: React.FC<Props> = ({ myDark }) => {
   const codeString = ` function makeAdder(x) {
     return function (y) {
       return x + y;
@@ -157,7 +161,7 @@ const Example3 = ({ myDark }) => {
   );
 };
 
-const Example4 = ({ myDark }) => {
+const Example4: React.FC<Props> = ({ myDark }) => {
   const codeString = ` // global scope
   const e = 10;
   function sum(a) {
@@ -194,7 +198,7 @@ const Example4 = ({ myDark }) => {
   );
 };
 
-const Example5 = ({ myDark }) => {
+const Example5: React.FC<Props> = ({ myDark }) => {
   const codeString = `  function sum(a) {
     return function sum2(b) {
       return function sum3(c) {
