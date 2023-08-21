@@ -1,14 +1,32 @@
 import React, { Fragment, useState } from "react";
 import Head from "next/head";
 
-import Theme from "@/utils/Theme";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../../utils/Theme";
+import BackTo from "../../../components/buttons/BackTo";
 
-const CssTransform = () => {
-  const [value1, setValue1] = useState(0);
-  const [direction1, setDirection1] = useState("X");
-  const [value2, setValue2] = useState(0);
-  const [direction2, setDirection2] = useState("X");
+interface Exa1Props {
+  value1: number;
+  setValue1: React.Dispatch<React.SetStateAction<number>>;
+  direction1: string;
+  setDirection1: React.Dispatch<React.SetStateAction<string>>;
+}
+
+interface Exa1RadiusProps extends Omit<Exa1Props, "value1"> {}
+
+interface Exa2Props {
+  value2: number;
+  setValue2: React.Dispatch<React.SetStateAction<number>>;
+  direction2: string;
+  setDirection2: React.Dispatch<React.SetStateAction<string>>;
+}
+
+interface Exa2RadiusProps extends Omit<Exa2Props, "value2"> {}
+
+const CssTransform: React.FC = () => {
+  const [value1, setValue1] = useState<number>(0);
+  const [direction1, setDirection1] = useState<string>("X");
+  const [value2, setValue2] = useState<number>(0);
+  const [direction2, setDirection2] = useState<string>("X");
 
   return (
     <Fragment>
@@ -65,16 +83,23 @@ const CssTransform = () => {
 
 export default CssTransform;
 
-const Exa1 = ({ value1, setValue1, direction1, setDirection1 }) => {
+const Exa1: React.FC<Exa1Props> = ({
+  value1,
+  setValue1,
+  direction1,
+  setDirection1,
+}) => {
   return (
     <div className="exa1 overflow-x-hidden overflow-y-hidden sm:overflow-x-visible sm:overflow-y-visible">
       <h4 className="text-2xl">Example 1</h4>
       <input
         id="value1"
-        max="300"
-        min="-300"
+        max={300}
+        min={-300}
         name=""
-        onChange={(e) => setValue1(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setValue1(Number(e.target.value))
+        }
         step={25}
         type="range"
         value={value1}
@@ -97,12 +122,16 @@ const Exa1 = ({ value1, setValue1, direction1, setDirection1 }) => {
       <div
         className="box1 m-auto mt-5 sm:w-[200px] sm:h-[200px] w-[50px] h-[50px] bg-blue-600"
         style={{ transform: `translate${direction1}(${value1}px)` }}
-       />
+      />
     </div>
   );
 };
 
-const Exa1Radios = ({ setValue1, direction1, setDirection1 }) => {
+const Exa1Radios: React.FC<Exa1RadiusProps> = ({
+  setValue1,
+  direction1,
+  setDirection1,
+}) => {
   return (
     <div className="flex gap-5">
       <div>
@@ -140,16 +169,23 @@ const Exa1Radios = ({ setValue1, direction1, setDirection1 }) => {
   );
 };
 
-const Exa2 = ({ value2, setValue2, direction2, setDirection2 }) => {
+const Exa2: React.FC<Exa2Props> = ({
+  value2,
+  setValue2,
+  direction2,
+  setDirection2,
+}) => {
   return (
     <div className="exa2">
       <h4 className="text-2xl">Example 2</h4>
       <input
         id="value2"
-        max="360"
-        min="-360"
+        max={360}
+        min={-360}
         name=""
-        onChange={(e) => setValue2(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setValue2(Number(e.target.value))
+        }
         step={25}
         type="range"
         value={value2}
@@ -172,12 +208,16 @@ const Exa2 = ({ value2, setValue2, direction2, setDirection2 }) => {
       <div
         className="box2 m-auto mt-5 sm:w-[200px] sm:h-[200px] w-[50px] h-[50px] bg-blue-600"
         style={{ transform: `rotate${direction2}(${value2}deg)` }}
-       />
+      />
     </div>
   );
 };
 
-const Exa2Radios = ({ setValue2, direction2, setDirection2 }) => {
+const Exa2Radios: React.FC<Exa2RadiusProps> = ({
+  setValue2,
+  direction2,
+  setDirection2,
+}) => {
   return (
     <div className="flex gap-5">
       <div>

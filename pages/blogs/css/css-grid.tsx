@@ -3,11 +3,15 @@ import Head from "next/head";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { github, dark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-import Theme from "@/utils/Theme";
-import { BlogContext } from "@/contextApi/blogContext";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../../utils/Theme";
+import { BlogContext } from "../../../contextApi/blogContext";
+import BackTo from "../../../components/buttons/BackTo";
 
-const CssGrid = () => {
+interface Props{
+  myDark:boolean
+}
+
+const CssGrid:React.FC = () => {
   const { dark: myDark } = useContext(BlogContext);
 
   return (
@@ -31,7 +35,7 @@ const CssGrid = () => {
 
 export default CssGrid;
 
-const ExampleOne = ({ myDark }) => {
+const ExampleOne:React.FC<Props> = ({ myDark }) => {
   const codeString1 = "grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr";
   const codeString2 = "grid-template-columns: repeat(7, 1fr)";
 
@@ -60,7 +64,7 @@ const ExampleOne = ({ myDark }) => {
   );
 };
 
-const ExampleTwo = ({ myDark }) => {
+const ExampleTwo:React.FC<Props> = ({ myDark }) => {
   const codeString1 =
     "grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))";
 
@@ -85,7 +89,7 @@ const ExampleTwo = ({ myDark }) => {
   );
 };
 
-const ExampleThree = ({ myDark }) => {
+const ExampleThree:React.FC<Props> = ({ myDark }) => {
   const codeString1 = `  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(3, 200px);`;
 

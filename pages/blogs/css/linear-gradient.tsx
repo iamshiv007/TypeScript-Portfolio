@@ -1,21 +1,21 @@
 import React, { Fragment, useState } from "react";
 import Head from "next/head";
 
-import Theme from "@/utils/Theme";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../../utils/Theme";
+import BackTo from "../../../components/buttons/BackTo";
 
-const LinearGradient = () => {
-  const [dire1, setDire1] = useState("right");
-  const [dire2, setDire2] = useState("top");
-  const [dire3, setDire3] = useState("right");
-  const [dire4, setDire4] = useState("right");
-  const [color1, setColor1] = useState("red");
-  const [color2, setColor2] = useState("orange");
-  const [color3, setColor3] = useState("blue");
-  const [color4, setColor4] = useState("aqua");
-  const [color5, setColor5] = useState("red");
-  const [color6, setColor6] = useState("blue");
-  const [color7, setColor7] = useState("green");
+const LinearGradient: React.FC = () => {
+  const [dire1, setDire1] = useState<string>("right");
+  const [dire2, setDire2] = useState<string>("top");
+  const [dire3, setDire3] = useState<string>("right");
+  const [dire4, setDire4] = useState<string>("right");
+  const [color1, setColor1] = useState<string>("red");
+  const [color2, setColor2] = useState<string>("orange");
+  const [color3, setColor3] = useState<string>("blue");
+  const [color4, setColor4] = useState<string>("aqua");
+  const [color5, setColor5] = useState<string>("red");
+  const [color6, setColor6] = useState<string>("blue");
+  const [color7, setColor7] = useState<string>("green");
 
   return (
     <Fragment>
@@ -28,9 +28,7 @@ const LinearGradient = () => {
 
         <div className="layoutContainer">
           <div className="layoutBox1">
-            <h1 className="blog-heading">
-              linear-gradient
-            </h1>
+            <h1 className="blog-heading">linear-gradient</h1>
 
             <div className="text-2xl pb-2 mt-6 mb-3">
               background:{" "}
@@ -72,7 +70,7 @@ const LinearGradient = () => {
               style={{
                 background: `linear-gradient(to ${dire1}, ${color1}, ${color2})`,
               }}
-             />
+            />
 
             <p className="text-2xl pb-2 mt-6 mb-3">
               background:{" "}
@@ -120,7 +118,7 @@ const LinearGradient = () => {
               style={{
                 background: `linear-gradient(to ${dire2} ${dire3}, ${color3}, ${color4})`,
               }}
-             />
+            />
 
             <p className="text-2xl pb-2 mt-6 mb-3">
               background:{" "}
@@ -167,7 +165,7 @@ const LinearGradient = () => {
               style={{
                 background: `linear-gradient(to ${dire4}, ${color5}, ${color6}, ${color7})`,
               }}
-             />
+            />
           </div>
 
           <div className="layoutBox2">Hello</div>
