@@ -4,8 +4,8 @@ import { SlMenu } from "react-icons/sl";
 import { RiCloseLine, RiSunFill } from "react-icons/ri";
 import { BsFillMoonFill } from "react-icons/bs";
 
-import { BlogContext } from "@/contextApi/blogContext";
-import { NavbarData } from "@/constants/NavbarData";
+import { BlogContext } from "../contextApi/blogContext";
+import { NavbarData } from "../constants/NavbarData";
 
 const MobileNavbar = () => {
   const { dark, setDark } = useContext(BlogContext);
