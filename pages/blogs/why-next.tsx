@@ -4,11 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { RiCloseLine } from "react-icons/ri";
 
-import Theme from "@/utils/Theme";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../utils/Theme";
+import BackTo from "../../components/buttons/BackTo";
 
-const FirstPost = () => {
-  const [close, setClose] = useState(false);
+const FirstPost: React.FC = () => {
+  const [close, setClose] = useState<boolean>(false);
 
   return (
     <Fragment>
@@ -84,7 +84,8 @@ const FirstPost = () => {
                 <div
                   className={"border border-solid border-black h-[150px]"}
                   style={{
-                    backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT77S6c9Tlz-zqWRRPgKeJDd8kSjbR_alp30g&usqp=CAU')",
+                    backgroundImage:
+                      "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT77S6c9Tlz-zqWRRPgKeJDd8kSjbR_alp30g&usqp=CAU')",
                   }}
                 >
                   <div
@@ -106,15 +107,16 @@ const FirstPost = () => {
 
 export default FirstPost;
 
-const BuiltInRouting = () => {
-  const newLocal = "https://res.cloudinary.com/practicaldev/image/fetch/s--DIT1rRjH--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://raw.githubusercontent.com/akuks/Misc/main/Images/nextjs_routing.png";
+const BuiltInRouting: React.FC = () => {
+  const newLocal: string =
+    "https://res.cloudinary.com/practicaldev/image/fetch/s--DIT1rRjH--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://raw.githubusercontent.com/akuks/Misc/main/Images/nextjs_routing.png";
   return (
     <div className="py-4">
       <p className="text-2xl pb-2">1. Built-in Routing Support</p>
       <p>
         Next js provides a built-in-file-based Routing system, which means you
-        don&apos;t need to use any external packages or libraries, React js requires
-        the use of react-router-dom for Routing.
+        don&apos;t need to use any external packages or libraries, React js
+        requires the use of react-router-dom for Routing.
       </p>
       <h4 className="font-bold my-1">For Pages directory</h4>
       <Image
@@ -158,28 +160,29 @@ const BuiltInRouting = () => {
       <p className="text-center mb-3">Image 3</p>
       <p className="text-gray-700 text-sm">
         If you are working with Next js version 13 or above and have an{" "}
-        <strong>app</strong> directory in your project&apos;s folder structure, you
-        can create a route by creating a folder inside app directory and adding
-        a <strong>page.js</strong> file inside it. , for example if you create a
-        folder called <strong>my-folder</strong> inside app directory and create
-        a file called <strong>page.js</strong> inside it, the path of this file
-        will be <strong>/my-folder</strong>. &#123;Image 2, Image 3&#125;
+        <strong>app</strong> directory in your project&apos;s folder structure,
+        you can create a route by creating a folder inside app directory and
+        adding a <strong>page.js</strong> file inside it. , for example if you
+        create a folder called <strong>my-folder</strong> inside app directory
+        and create a file called <strong>page.js</strong> inside it, the path of
+        this file will be <strong>/my-folder</strong>. &#123;Image 2, Image
+        3&#125;
       </p>
     </div>
   );
 };
 
-const FasterSpeed = () => {
+const FasterSpeed: React.FC = () => {
   return (
     <div className="py-4">
       <p className="text-2xl pb-2">2. 700 Times Faster Speed in Production</p>
       <h4 className="font-bold my-1">Meaning?</h4>
       <p className="text-gray-700 text-sm">
         Next.js can be up to 700 times faster in production mode, which means
-        that When you are building a website and it&apos;s running on localhost, any
-        changes you make and save will updated 700 times faster than React.
-        However, in deployment mode, it&apos;s speed approximately the same as to
-        React.
+        that When you are building a website and it&apos;s running on localhost,
+        any changes you make and save will updated 700 times faster than React.
+        However, in deployment mode, it&apos;s speed approximately the same as
+        to React.
       </p>
       <h4 className="font-bold my-1">Why?</h4>
       <p className="text-gray-700 text-sm">
@@ -194,14 +197,14 @@ const FasterSpeed = () => {
   );
 };
 
-const ApiSupport = () => {
+const ApiSupport: React.FC = () => {
   return (
     <div className="py-4">
       <p className="text-2xl pb-2">3. Write both Backend and Frontend</p>
       <p className="text-gray-700 text-sm">
         Next js provides developers with a built-in server system, which means
-        that you don&apos;t need to set up a separate server to write backend code
-        for your application.
+        that you don&apos;t need to set up a separate server to write backend
+        code for your application.
       </p>
       <h4 className="font-bold my-1">For Pages Directory</h4>
       <p className="text-gray-700 text-sm">
@@ -234,7 +237,7 @@ const ApiSupport = () => {
   );
 };
 
-const Seo = () => {
+const Seo: React.FC = () => {
   return (
     <div className="py-4">
       <p className="text-2xl pb-2">4. Search Engine Optimization (SEO)</p>
@@ -244,9 +247,10 @@ const Seo = () => {
       </p>
       <p className="text-gray-700 text-sm">
         Load speed is the one of most important factors when it comes to SEO and
-        Google ranking and with Next.js you&apos;re simply faster. What makes Next.js
-        stand out against other popular framework, is that it renders the HTML
-        on the server(server-side) rather than in the browser (client side).
+        Google ranking and with Next.js you&apos;re simply faster. What makes
+        Next.js stand out against other popular framework, is that it renders
+        the HTML on the server(server-side) rather than in the browser (client
+        side).
       </p>
     </div>
   );

@@ -3,11 +3,15 @@ import Head from "next/head";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { dark, github } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-import Theme from "@/utils/Theme";
-import { BlogContext } from "@/contextApi/blogContext";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../../utils/Theme";
+import { BlogContext } from "../../../contextApi/blogContext";
+import BackTo from "../../../components/buttons/BackTo";
 
-const UseEffect = () => {
+interface Props {
+  myDark: boolean;
+}
+
+const UseEffect: React.FC = () => {
   const { dark: myDark } = useContext(BlogContext);
 
   return (
@@ -56,7 +60,7 @@ const UseEffect = () => {
 
 export default UseEffect;
 
-const Example1 = ({ myDark }) => {
+const Example1: React.FC<Props> = ({ myDark }) => {
   const codeString = ` useEffect(() => {
     //Runs on every render
   });`;
@@ -76,7 +80,7 @@ const Example1 = ({ myDark }) => {
   );
 };
 
-const Example2 = ({ myDark }) => {
+const Example2: React.FC<Props> = ({ myDark }) => {
   const codeString = `useEffect(() => {
     //Runs only on the first render
   }, []);`;
@@ -96,7 +100,7 @@ const Example2 = ({ myDark }) => {
   );
 };
 
-const Example3 = ({ myDark }) => {
+const Example3: React.FC<Props> = ({ myDark }) => {
   const codeString = `useEffect(() => {
     //Runs on the first render
     //And any time any dependency value changes

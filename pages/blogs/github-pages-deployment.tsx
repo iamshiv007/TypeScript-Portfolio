@@ -3,11 +3,15 @@ import Head from "next/head";
 import { github, dark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
-import Theme from "@/utils/Theme";
-import { BlogContext } from "@/contextApi/blogContext";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../utils/Theme";
+import { BlogContext } from "../../contextApi/blogContext";
+import BackTo from "../../components/buttons/BackTo";
 
-const GithubPagesDeploy = () => {
+interface Props {
+  myDark: boolean;
+}
+
+const GithubPagesDeploy: React.FC = () => {
   const { dark: myDark } = useContext(BlogContext);
 
   return (
@@ -49,8 +53,9 @@ const GithubPagesDeploy = () => {
 
 export default GithubPagesDeploy;
 
-const StepOne = ({ myDark }) => {
-  const codeString = "\"homepage\": \"https://your_github_username.github.io/repo_name\",";
+const StepOne: React.FC<Props> = ({ myDark }) => {
+  const codeString: string =
+    "\"homepage\": \"https://your_github_username.github.io/repo_name\",";
 
   return (
     <>
@@ -73,7 +78,7 @@ const StepOne = ({ myDark }) => {
   );
 };
 
-const StepTwo = ({ myDark }) => {
+const StepTwo: React.FC<Props> = ({ myDark }) => {
   const codeString1 = "npm install --save gh-pages";
   const codeString2 = "yarn add gh-pages";
 
@@ -98,7 +103,7 @@ const StepTwo = ({ myDark }) => {
   );
 };
 
-const StepThree = ({ myDark }) => {
+const StepThree: React.FC<Props> = ({ myDark }) => {
   const codeString = `"predeploy": "npm run build",
 "deploy": "gh-pages -d build"`;
 
@@ -127,7 +132,7 @@ const StepThree = ({ myDark }) => {
   );
 };
 
-const StepFour = ({ myDark }) => {
+const StepFour: React.FC<Props> = ({ myDark }) => {
   const codeString = "npm run deploy";
 
   return (

@@ -3,11 +3,15 @@ import Head from "next/head";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { github, dark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-import BackTo from "@/components/buttons/BackTo";
-import Theme from "@/utils/Theme";
-import { BlogContext } from "@/contextApi/blogContext";
+import BackTo from "../../../components/buttons/BackTo";
+import Theme from "../../../utils/Theme";
+import { BlogContext } from "../../../contextApi/blogContext";
 
-const UseState = () => {
+interface Props {
+  myDark: boolean;
+}
+
+const UseState: React.FC = () => {
   const { dark: myDark } = useContext(BlogContext);
 
   return (
@@ -63,7 +67,7 @@ const UseState = () => {
 
 export default UseState;
 
-const Syntax = ({ myDark }) => {
+const Syntax: React.FC<Props> = ({ myDark }) => {
   const codeString = "const [state, setState] = useState(initialState);";
 
   return (

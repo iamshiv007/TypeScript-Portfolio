@@ -4,11 +4,15 @@ import Image from "next/image";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { dark, github } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-import Theme from "@/utils/Theme";
-import { BlogContext } from "@/contextApi/blogContext";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../utils/Theme";
+import { BlogContext } from "../../contextApi/blogContext";
+import BackTo from "../../components/buttons/BackTo";
 
-const SendEmail = () => {
+interface Props {
+  myDark: boolean;
+}
+
+const SendEmail: React.FC = () => {
   const { dark: myDark } = useContext(BlogContext);
 
   return (
@@ -122,7 +126,7 @@ const SendEmail = () => {
 
 export default SendEmail;
 
-const PointFour = ({ myDark }) => {
+const PointFour: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const express = require('express') 
   const app = express()
   const dotenv = require('dotenv').config()
@@ -158,7 +162,7 @@ const PointFour = ({ myDark }) => {
   );
 };
 
-const PointFive = () => {
+const PointFive: React.FC = () => {
   return (
     <>
       <div className="mt-8 mb-3 font-bold text-lg">
@@ -176,7 +180,7 @@ const PointFive = () => {
   );
 };
 
-const PointSix = ({ myDark }) => {
+const PointSix: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const mongoose = require('mongoose')
 
   // Database
@@ -210,7 +214,7 @@ const PointSix = ({ myDark }) => {
   );
 };
 
-const PointSeven = ({ myDark }) => {
+const PointSeven: React.FC<Props> = ({ myDark }) => {
   const codeString = `  // Database
   const connectDb = require('./connection/connect')
   connectDb()`;
@@ -239,7 +243,7 @@ const PointSeven = ({ myDark }) => {
   );
 };
 
-const PointEight = () => {
+const PointEight: React.FC = () => {
   return (
     <>
       <div className="mt-8 mb-3 font-bold text-lg">
@@ -273,7 +277,7 @@ const PointEight = () => {
   );
 };
 
-const PointNine = ({ myDark }) => {
+const PointNine: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const nodemailer = require("nodemailer")
 
   exports.sendMail = async (req, res) => {
@@ -358,7 +362,7 @@ const PointNine = ({ myDark }) => {
   );
 };
 
-const PointTen = () => {
+const PointTen: React.FC<Props> = () => {
   return (
     <>
       <div className="mt-8 mb-3 font-bold text-lg">
@@ -380,7 +384,7 @@ const PointTen = () => {
   );
 };
 
-const PointEleven = ({ myDark }) => {
+const PointEleven: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const router = require('express').Router()
   const { sendMail } = require('../controllers/mail')
   
@@ -409,7 +413,7 @@ const PointEleven = ({ myDark }) => {
   );
 };
 
-const PointTwelve = ({ myDark }) => {
+const PointTwelve: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const router = require('express').Router()
 
   // mail routes
@@ -439,7 +443,7 @@ const PointTwelve = ({ myDark }) => {
   );
 };
 
-const PointThirteen = ({ myDark }) => {
+const PointThirteen: React.FC<Props> = ({ myDark }) => {
   const codeString = `  // routes
   const router = require('./routes/router')
   app.use('/api', router)`;
@@ -465,7 +469,7 @@ const PointThirteen = ({ myDark }) => {
   );
 };
 
-const PointFourteen = ({ myDark }) => {
+const PointFourteen: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const nodemailer = require("nodemailer")
 
   exports.sendMail = (req, res) => {
@@ -553,7 +557,7 @@ const PointFourteen = ({ myDark }) => {
   );
 };
 
-const PointFifteen = () => {
+const PointFifteen: React.FC = () => {
   return (
     <>
       <div className="mt-8 mb-3 font-bold text-lg">15. install multer</div>
@@ -564,7 +568,7 @@ const PointFifteen = () => {
   );
 };
 
-const PointSixTeen = ({ myDark }) => {
+const PointSixTeen: React.FC<Props> = ({ myDark }) => {
   const codeString = `  const router = require('express').Router()
   const { sendMail } = require('../controllers/mail')
   
@@ -595,8 +599,8 @@ const PointSixTeen = ({ myDark }) => {
 
       <div className="bg-gray-200 my-4 p-2 rounded dark:bg-black">
         {" "}
-        <strong>Note:- </strong> Make sure &quot;attachment&quot; string will same for
-        file, when we hit post request.
+        <strong>Note:- </strong> Make sure &quot;attachment&quot; string will
+        same for file, when we hit post request.
       </div>
     </>
   );

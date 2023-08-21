@@ -1,6 +1,6 @@
 import React from "react"
 
-const DragAndDrop = () => {
+const DragAndDrop:React.FC = () => {
   return (
     <div>DragAndDrop</div>
   )

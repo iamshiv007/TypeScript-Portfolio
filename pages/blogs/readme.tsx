@@ -3,11 +3,15 @@ import Head from "next/head";
 import { github, dark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
-import Theme from "@/utils/Theme";
-import { BlogContext } from "@/contextApi/blogContext";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../utils/Theme";
+import { BlogContext } from "../../contextApi/blogContext";
+import BackTo from "../../components/buttons/BackTo";
 
-const Readme = () => {
+interface Props {
+  myDark: boolean;
+}
+
+const Readme: React.FC = () => {
   const { dark: myDark } = useContext(BlogContext);
 
   return (
@@ -38,7 +42,7 @@ const Readme = () => {
 
 export default Readme;
 
-const PointOne = ({ myDark }) => {
+const PointOne: React.FC<Props> = ({ myDark }) => {
   const codeString1 = `# Heading level 1
 
 ## Heading level 2
@@ -79,7 +83,7 @@ const PointOne = ({ myDark }) => {
   );
 };
 
-const PointTwo = ({ myDark }) => {
+const PointTwo: React.FC<Props> = ({ myDark }) => {
   const codeString = `**Bold Text**
 *Italic Text*`;
 
@@ -103,7 +107,7 @@ const PointTwo = ({ myDark }) => {
   );
 };
 
-const PointThree = ({ myDark }) => {
+const PointThree: React.FC<Props> = ({ myDark }) => {
   const codeString = `Write text without any space in starting. <br/>
 Simple add two or more space in end of line for line break in a Paragraph.`;
 
@@ -130,8 +134,9 @@ Simple add two or more space in end of line for line break in a Paragraph.`;
   );
 };
 
-const PointFour = ({ myDark }) => {
-  const codeString = "> To create a blockquote, add a (>) in starting of a paragraph or line.";
+const PointFour: React.FC<Props> = ({ myDark }) => {
+  const codeString =
+    "> To create a blockquote, add a (>) in starting of a paragraph or line.";
 
   return (
     <>
@@ -159,7 +164,7 @@ const PointFour = ({ myDark }) => {
   );
 };
 
-const PointFive = ({ myDark }) => {
+const PointFive: React.FC<Props> = ({ myDark }) => {
   const codeString1 = `1. simply write number in
 2. starting of line
 3. and don't forget

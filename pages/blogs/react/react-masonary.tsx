@@ -3,11 +3,20 @@ import Head from "next/head";
 import axios from "axios";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
-import Theme from "@/utils/Theme";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../../utils/Theme";
+import BackTo from "../../../components/buttons/BackTo";
 
-const ReactMasonary = () => {
-  const [photos, setPhotos] = useState([]);
+interface Photo {
+  id: number;
+  src: {
+    small: string;
+  };
+  url: string;
+  photographer: string;
+}
+
+const ReactMasonary: React.FC = () => {
+  const [photos, setPhotos] = useState<Photo[]>([]);
 
   useEffect(() => {
     axios
@@ -19,7 +28,10 @@ const ReactMasonary = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleDownload = async (imageUrl, myurl) => {
+  const handleDownload = async (
+    imageUrl: string,
+    myurl: string
+  ): Promise<void> => {
     try {
       const response = await fetch(imageUrl);
       const blob = await response.blob();
@@ -51,18 +63,16 @@ const ReactMasonary = () => {
             columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 4 }}
           >
             <Masonry>
-              {photos?.map((photo, key) => {
+              {photos?.map((photo: Photo) => {
                 return (
-                  <div key={key} style={{ margin: "10px" }}>
+                  <div key={photo.id} style={{ margin: "10px" }}>
                     <button
-                      onClick={() =>
-                        handleDownload(photo.src.original, photo.url)
-                      }
+                      onClick={() => handleDownload(photo.src.small, photo.url)}
                     >
                       Download
                     </button>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img alt={photo.photographer} src={photo.src.original} />
+                    <img alt={photo.photographer} src={photo.src.small} />
                   </div>
                 );
               })}

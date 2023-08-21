@@ -4,15 +4,15 @@ import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
-import Theme from "@/utils/Theme";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../../utils/Theme";
+import BackTo from "../../../components/buttons/BackTo";
 
-const ReactResposiveCarousel = () => {
-  const [arrows, setArrows] = useState(false);
-  const [indicator, setIndicator] = useState(false);
-  const [status, setStatus] = useState(false);
-  const [keyBoard, setKeyBoard] = useState(false);
-  const [thumbs, setThumbs] = useState(false);
+const ReactResposiveCarousel: React.FC = () => {
+  const [arrows, setArrows] = useState<boolean>(false);
+  const [indicator, setIndicator] = useState<boolean>(false);
+  const [status, setStatus] = useState<boolean>(false);
+  const [keyBoard, setKeyBoard] = useState<boolean>(false);
+  const [thumbs, setThumbs] = useState<boolean>(false);
 
   return (
     <Fragment>

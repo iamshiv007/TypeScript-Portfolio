@@ -3,9 +3,13 @@ import React, { Fragment, useContext } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { github, dark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-import Theme from "@/utils/Theme";
-import { BlogContext } from "@/contextApi/blogContext";
-import BackTo from "@/components/buttons/BackTo";
+import Theme from "../../../utils/Theme";
+import { BlogContext } from "../../../contextApi/blogContext";
+import BackTo from "../../../components/buttons/BackTo";
+
+interface Props {
+  myDark: boolean;
+}
 
 const MyFragment = () => {
   const { dark: myDark } = useContext(BlogContext);
@@ -134,7 +138,7 @@ const MyFragment = () => {
 
 export default MyFragment;
 
-const Example1 = ({ myDark }) => {
+const Example1: React.FC<Props> = ({ myDark }) => {
   const codeString = `  // Rendering with div tag  
   class App extends React.Component {   
        render() {    
@@ -162,7 +166,7 @@ const Example1 = ({ myDark }) => {
   );
 };
 
-const Example2 = ({ myDark }) => {
+const Example2: React.FC<Props> = ({ myDark }) => {
   const codeString = `<React.Fragment>  
   <h2> child1 </h2>   
   <p> child2 </p>   
@@ -183,7 +187,7 @@ const Example2 = ({ myDark }) => {
   );
 };
 
-const Example3 = ({ myDark }) => {
+const Example3: React.FC<Props> = ({ myDark }) => {
   const codeString = `  // Rendering with fragments tag  
   class App extends React.Component {   
       render() {   
@@ -210,7 +214,7 @@ const Example3 = ({ myDark }) => {
   );
 };
 
-const Example4 = ({ myDark }) => {
+const Example4: React.FC<Props> = ({ myDark }) => {
   const codeString = `  //Rendering with short syntax   
   class Columns extends React.Component {   
     render() {   
@@ -237,7 +241,7 @@ const Example4 = ({ myDark }) => {
   );
 };
 
-const Example5 = ({ myDark }) => {
+const Example5: React.FC<Props> = ({ myDark }) => {
   const codeString = `  Function  = (props) {  
     return (  
       <Fragment>  
