@@ -8,9 +8,10 @@ type Props = {
 
 export const BlogProvider: React.FC<Props> = ({ children }) => {
   const [dark, setDark] = useState<boolean>(true);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   return (
-    <BlogContext.Provider value={{ dark: true, setDark }}>
+    <BlogContext.Provider value={{ dark, setDark, showModal, setShowModal }}>
       {children}
     </BlogContext.Provider>
   );

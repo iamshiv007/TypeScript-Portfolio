@@ -49,7 +49,6 @@ const MobileNavbar: React.FC = () => {
 
             <div className="fixed bottom-32 flex justify-center w-[40vh] left-0">
               <button
-                className=""
                 onClick={() => {
                   setDark(!dark);
                   setMenu(!menu);

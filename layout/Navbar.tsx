@@ -1,11 +1,15 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import Link from "next/link";
 import { BsFillMoonFill } from "react-icons/bs";
 import { DiTechcrunch } from "react-icons/di";
+import { RiSunFill } from "react-icons/ri";
 
 import { NavbarData, Navbar as NavbarType } from "../constants";
+import { BlogContext } from "../contextApi/blogContext";
 
 const Navbar: React.FC = () => {
+  const { dark, setDark } = useContext(BlogContext);
+
   return (
     <Fragment>
       <div
@@ -29,8 +33,12 @@ const Navbar: React.FC = () => {
         </div>
 
         <div>
-          <button className="dark:text-white">
-            <BsFillMoonFill color="#07d0e5" size={22} />
+          <button className="dark:text-white" onClick={() => setDark(!dark)}>
+            {dark ? (
+              <RiSunFill color="#c72c6c" size={22} />
+            ) : (
+              <BsFillMoonFill color="#07d0e5" size={22} />
+            )}
           </button>
         </div>
       </div>

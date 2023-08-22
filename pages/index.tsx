@@ -2,7 +2,10 @@ import React, { Fragment } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 
+import Theme from "../utils/Theme";
 const Navbar = dynamic(() => import("../layout/Navbar"));
+const MobileNavbar = dynamic(() => import("../layout/mobileNavbar"));
+const ChatSystem = dynamic(() => import("../utils/ChatSystem"));
 const Intro = dynamic(() => import("../sections/Intro"));
 const SocialMedia = dynamic(() => import("../utils/SocialMedia"));
 const Skills = dynamic(() => import("../sections/Skills"));
@@ -12,7 +15,7 @@ const Journey = dynamic(() => import("../sections/Journey"));
 const Apps = dynamic(() => import("../sections/Apps"));
 const SendMail = dynamic(() => import("../utils/SendMail"));
 const Footer = dynamic(() => import("../layout/Footer"));
-// const ChatSystem = dynamic(() => import("../utils/ChatSystem"));
+const Feedback = dynamic(() => import("../utils/Feedback"));
 
 const Home: React.FC = () => {
   return (
@@ -73,10 +76,12 @@ const Home: React.FC = () => {
           type="image/x-icon"
         />
       </Head>
-      <div className={"dark"}>
+      <Theme>
         <div className="dark:bg-gray-700 ">
           {/* Navbar */}
           <Navbar />
+          {/* Mobile Navbar */}
+          <MobileNavbar />
           {/* Intro */}
           <Intro />
           {/* SocialMedia */}
@@ -96,9 +101,11 @@ const Home: React.FC = () => {
           {/* Footer */}
           <Footer />
           {/* ChatSystem */}
-          {/* <ChatSystem /> */}
+          <ChatSystem />
+          {/* Feedback Modal */}
+          <Feedback />
         </div>
-      </div>
+      </Theme>
     </Fragment>
   );
 };
